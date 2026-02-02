@@ -28,11 +28,11 @@ export async function POST(req: Request) {
 
     // Caso seja Pix Direto (o que você implementou agora)
     if (event === "pix.received") {
-      giftId = body.data.metadata?.externalId;
+      giftId = body.data.pixQrCode?.id;
     }
     // Caso ainda use Billing/Checkout Externo em algum momento
     else if (event === "billing.paid") {
-      giftId = body.data.products?.[0]?.externalId;
+      giftId = body.data.pixQrCode?.id;
     }
 
     // 3. Atualizar o Banco
