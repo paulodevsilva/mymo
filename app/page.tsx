@@ -130,7 +130,7 @@ export default function LovePageApp() {
     if (pixData?.giftId) {
       interval = setInterval(async () => {
         try {
-          const res = await fetch(`/api/gift/status?id=${pixData.giftId}`);
+          const res = await fetch(`/api/gift?id=${pixData.giftId}`);
           const data = await res.json();
           if (data.isPaid) {
             clearInterval(interval);
