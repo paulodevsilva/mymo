@@ -22,26 +22,7 @@ export async function POST(req: Request) {
     const event = body.event;
     console.log("ℹ️ Evento:", event);
 
-    let giftId = null;
-
-    // 2. Lógica para capturar o ID (Suporta Billing e Pix Direto)
-
-    // Caso seja Pix Direto (o que você implementou agora)
-    if (event === "pix.received") {
-      giftId = body.data.pixQrCode?.id;
-    }
-    // Caso ainda use Billing/Checkout Externo em algum momento
-    else if (event === "billing.paid") {
-      giftId = body.data.pixQrCode?.id;
-    }
-
-    // 3. Atualizar o Banco
-    if (giftId) {
-      console.log(`💰 Pagamento confirmado para o Presente ID: ${giftId}`);
-      await db.markAsPaid(giftId);
-    } else {
-      // Fallback: Tenta identificar pelo ID do AbacatePay se o externalId não veio
-      const billingId = body.data.id;
+    const billingId = body.data.pixQrCode?.id;
       if (billingId) {
         const giftByAbc = await (db as any).findByAbcId?.(billingId);
         if (giftByAbc) {
@@ -53,7 +34,6 @@ export async function POST(req: Request) {
       console.warn(
         "⚠️ Webhook recebido, mas nenhum identificador foi encontrado.",
       );
-    }
 
     return NextResponse.json({ received: true }, { status: 200 });
   } catch (error) {
