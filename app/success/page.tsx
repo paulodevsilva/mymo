@@ -48,7 +48,7 @@ function SuccessContent() {
           fill="currentColor"
           size={40}
         />
-        <h3 className="font-serif text-3xl mb-6 text-rose-950">
+        <h3 className="font-serif text-3xl mb-6 text-stone-900">
           Seu Mymo está pronto!
         </h3>
 
@@ -65,7 +65,7 @@ function SuccessContent() {
 
         <button
             onClick={() => window.open(giftUrl, "_blank")}
-            className="w-full bg-rose-900 text-rose-50 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 mb-3 shadow-xl shadow-rose-200 hover:bg-rose-800 transition-all font-serif"
+            className="w-full bg-rose-600 text-rose-50 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 mb-3 shadow-xl shadow-rose-200 hover:bg-rose-700 transition-all font-serif"
         >
             <Send size={18} /> Ver meu Mymo
         </button>

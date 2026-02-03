@@ -1,23 +1,27 @@
 "use client";
 
 import MusicSegmentSelector from "@/components/MusicSegmentSelector";
+import Features from "@/components/landing/Features";
+import Hero from "@/components/landing/Hero";
+import HowItWorks from "@/components/landing/HowItWorks";
+import LivePreview from "@/components/landing/LivePreview";
+import Pricing from "@/components/landing/Pricing";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Calendar,
-  ChevronLeft,
-  ChevronRight,
-  Copy,
-  CreditCard,
-  Heart,
-  Loader2,
-  Music,
-  Palette,
-  Plus,
-  Send,
-  Smile,
-  Sparkles,
-  X,
-  Youtube,
+    Calendar,
+    ChevronLeft,
+    ChevronRight,
+    Copy,
+    CreditCard,
+    Heart,
+    Loader2,
+    Music,
+    Palette,
+    Plus,
+    Send,
+    Smile,
+    X,
+    Youtube
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import NextImage from "next/image";
@@ -192,234 +196,15 @@ export default function LovePageApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCF8] text-rose-950 font-sans selection:bg-rose-200">
-      {/* --- Hero Section --- */}
-      <section className="relative px-6 pt-24 md:pt-36 pb-32 text-center overflow-hidden">
-        {/* Decorative Blobs */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-rose-200/20 rounded-full blur-[100px] -z-10 mix-blend-multiply" />
-        <div className="absolute top-40 right-0 w-[400px] h-[400px] bg-orange-100/30 rounded-full blur-[80px] -z-10 mix-blend-multiply" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto relative z-10"
-        >
-          <div className="mb-12 flex justify-center">
-            <NextImage
-              src="/logo.png"
-              width={80}
-              height={80}
-              alt="Lovely Gift Logo"
-              className="rounded-2xl shadow-lg border border-rose-100"
-            />
-          </div>
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm text-rose-800 px-6 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] mb-8 border border-rose-100 shadow-sm">
-            <Sparkles size={14} className="text-rose-500" /> Mymo: Tecnologia + Emoção
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif text-rose-950 leading-[1.1] mb-8 tracking-tight text-balance">
-            Toda conexão merece <br />
-            <span className="bg-gradient-to-r from-rose-500 via-rose-600 to-orange-400 bg-clip-text text-transparent italic pr-2">
-              um Mymo inesquecível.
-            </span>
-          </h1>
-          <p className="text-stone-500 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light text-balance px-4">
-           Transforme sentimentos em um <strong>Mymo</strong>. Sua cápsula de memórias personalizada com fotos, a música de vocês e uma mensagem que toca o coração.
-          </p>
-          <motion.button
-            onClick={() => setIsFormOpen(true)}
-            whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(225, 29, 72, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-rose-500 to-rose-600 text-white w-full md:w-auto px-10 md:px-14 py-5 rounded-full font-bold text-xl shadow-2xl shadow-rose-500/30 flex items-center justify-center gap-3 mx-auto transition-all hover:brightness-110 active:brightness-90"
-          >
-            Criar meu primeiro Mymo <Plus size={22} />
-          </motion.button>
-
-          <div className="mt-12 flex items-center justify-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-             {/* Espaço para Trust Badges ou Social Proof se houver no futuro */}
-             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-stone-400">
-               <span className="flex text-rose-400"><Heart size={12} fill="currentColor" /></span> +5.000 casais
-             </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* --- Features Section --- */}
-      <section className="py-32 px-6 bg-white relative">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-serif text-rose-950 mb-6">
-              O Mymo perfeito para qualquer carinho
-            </h2>
-            <p className="text-stone-500 text-lg max-w-xl mx-auto font-light">
-              Para o seu amor, para o melhor amigo ou para a família. Um Mymo transforma memórias em algo que pode ser sentido e compartilhado.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Heart size={28} />,
-                title: "Sua História",
-                desc: "Capture cada detalhe especial. Do primeiro 'oi' aos momentos mais inesquecíveis, tudo do seu jeito.",
-                color: "bg-rose-50 text-rose-500"
-              },
-              {
-                icon: <Music size={28} />,
-                title: "Trilha Sonora",
-                desc: "A música favorita de vocês começa a tocar assim que o Mymo é aberto. Emoção em cada nota.",
-                color: "bg-orange-50 text-orange-500"
-              },
-              {
-                icon: <Sparkles size={28} />,
-                title: "QR Code Exclusivo",
-                desc: "Gere um link único e QR Code para imprimir ou enviar. Um portal para as suas melhores memórias.",
-                color: "bg-amber-50 text-amber-500"
-              }
-            ].map((feature, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -5 }}
-                className="group p-10 rounded-[2.5rem] bg-stone-50/50 border border-stone-100/80 text-center hover:bg-white hover:border-rose-100 hover:shadow-xl hover:shadow-rose-100/30 transition-all duration-300"
-              >
-                <div className={`w-16 h-16 ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform`}>
-                  {feature.icon}
-                </div>
-                <h3 className="font-serif text-2xl text-rose-950 mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-stone-500 leading-relaxed font-light">
-                  {feature.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- Pricing Section (NEW) --- */}
-      <section id="pricing" className="py-32 px-6 bg-[#FDFCF8] relative overflow-hidden">
-        {/* Background Decorative */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e11d48_0.5px,transparent_0.5px)] [background-size:24px_24px] opacity-[0.03]" />
-
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <span className="text-rose-500 font-bold text-xs uppercase tracking-widest mb-3 block">Planos Disponíveis</span>
-            <h2 className="text-3xl md:text-5xl font-serif text-rose-950 mb-6">
-              Inicie seu primeiro Mymo
-            </h2>
-            <p className="text-stone-500 text-lg font-light">
-              Escolha a melhor forma de surpreender hoje.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
-            {/* Plan Simple */}
-            <div className="p-8 md:p-12 rounded-[2.5rem] bg-white border border-stone-200 text-center hover:border-rose-200 transition-colors relative">
-               <h3 className="font-serif text-2xl text-stone-600 mb-2">Simples</h3>
-               <div className="text-5xl font-serif text-stone-900 mb-6 tracking-tight">R$ 9,90</div>
-
-               <ul className="space-y-4 text-left mb-10 text-stone-600 text-sm">
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-stone-300" /> 1 Foto Especial</li>
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-stone-300" /> Trilha Sonora (YouTube)</li>
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-stone-300" /> Mensagem Personalizada</li>
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-stone-300" /> QR Code Digital</li>
-               </ul>
-
-               <button
-                 onClick={() => { setPlan("simple"); setIsFormOpen(true); }}
-                 className="w-full py-4 rounded-xl border border-stone-200 font-bold text-stone-600 hover:bg-stone-50 hover:text-stone-900 transition-all uppercase text-xs tracking-widest"
-               >
-                 Criar Mymo Simples
-               </button>
-            </div>
-
-            {/* Plan Premium */}
-            <div className="p-8 md:p-12 rounded-[2.5rem] bg-rose-950 text-white shadow-2xl shadow-rose-900/20 text-center relative overflow-hidden transform md:scale-105">
-               <div className="absolute top-6 right-6 bg-rose-500/20 backdrop-blur-md px-3 py-1 rounded-full border border-rose-500/30 text-[10px] font-bold uppercase tracking-widest text-rose-200">
-                 Mais Popular
-               </div>
-
-               <h3 className="font-serif text-2xl text-rose-200 mb-2">Premium</h3>
-               <div className="text-5xl font-serif text-white mb-6 tracking-tight">R$ 19,90</div>
-
-               <ul className="space-y-4 text-left mb-10 text-rose-100/80 text-sm">
-                 <li className="flex items-center gap-3"><Sparkles size={14} className="text-rose-400" /> <strong>3 Fotos</strong> (Galeria)</li>
-                 <li className="flex items-center gap-3"><Sparkles size={14} className="text-rose-400" /> <strong>Personalização Completa</strong> (Cor e Emoji)</li>
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-rose-700" /> Trilha Sonora (YouTube)</li>
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-rose-700" /> Mensagem Personalizada</li>
-                 <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-rose-700" /> QR Code Digital</li>
-               </ul>
-
-               <button
-                 onClick={() => { setPlan("premium"); setIsFormOpen(true); }}
-                 className="w-full py-4 rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 font-bold text-white shadow-lg shadow-rose-900/50 hover:brightness-110 transition-all uppercase text-xs tracking-widest"
-               >
-                 Criar Mymo Premium
-               </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- How It Works --- */}
-      <section className="py-32 px-6 bg-white border-t border-stone-100 relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-full h-[500px] bg-rose-50/40 -skew-y-3 -z-10" />
-
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-3xl md:text-5xl font-serif text-rose-950 mb-6">
-              Como funciona
-            </h2>
-            <p className="text-stone-500 text-lg font-light">
-              Dois minutos para criar uma memória eterna.
-            </p>
-          </div>
-
-          <div className="relative">
-             {/* Linha do tempo central desktop */}
-             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-rose-200 via-rose-300 to-rose-200 hidden md:block -translate-x-1/2" />
-
-             {[
-               { id: 1, title: "Personalize", desc: "Dê vida ao seu Mymo com nomes, datas e fotos em minutos.", icon: <Palette size={20} /> },
-               { id: 2, title: "Envio Instantâneo", desc: "Aprovação rápida via Pix para o seu Mymo ficar pronto na hora.", icon: <Send size={20} /> },
-               { id: 3, title: "Compartilhe o Link", desc: "Envie o link único ou QR Code para quem você ama abrir seu Mymo.", icon: <QRCodeSVG value="" size={20} /> }
-             ].map((step, i) => (
-                <motion.div
-                   key={i}
-                   initial={{ opacity: 0, y: 50 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true, margin: "-100px" }}
-                   transition={{ duration: 0.5, delay: i * 0.2 }}
-                   className={`relative flex flex-col md:flex-row items-center gap-8 mb-20 last:mb-0 ${i % 2 === 0 ? "md:text-right md:justify-end" : "md:text-left md:justify-start"}`}
-                >
-                   {/* Conteúdo desktop: alterna lados */}
-                   <div className={`md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16 md:text-left md:order-last"} pl-16 md:pl-0 text-left w-full`}>
-                      <div className="inline-block p-3 rounded-2xl bg-white border border-rose-100 shadow-sm mb-4 text-rose-500">
-                        {step.icon}
-                      </div>
-                      <h3 className="font-serif text-2xl text-rose-950 mb-3">{step.title}</h3>
-                      <p className="text-stone-500 leading-relaxed font-light">{step.desc}</p>
-                   </div>
-
-                   {/* Bolinha Central */}
-                   <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-rose-100 flex items-center justify-center text-rose-400 font-bold shadow-lg z-10 group transition-all duration-500 hover:scale-110 hover:border-rose-300 hover:text-rose-600">
-                      {i + 1}
-                   </div>
-
-                   {/* Espaço vazio para manter alinhamento no grid */}
-                   <div className="hidden md:block md:w-1/2" />
-                </motion.div>
-             ))}
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-[#FDFCF8] text-stone-900 font-sans selection:bg-rose-200">
+      <Hero onStartCreate={() => setIsFormOpen(true)} />
+      <Features />
+      <LivePreview />
+      <Pricing onSelectPlan={(p) => { setPlan(p); setIsFormOpen(true); }} />
+      <HowItWorks />
 
       {/* Footer minimalista */}
       <footer className="bg-[#FDFCF8] border-t border-stone-100 py-12 text-center">
-        <p className="text-stone-400 text-xs uppercase tracking-widest font-bold">
-          Feito com ❤️ para casais apaixonados
-        </p>
       </footer>
 
       {/* --- Modal Multi-Step --- */}
@@ -458,7 +243,7 @@ export default function LovePageApp() {
                   <span className="text-[10px] font-bold text-rose-400 uppercase tracking-[0.3em]">
                     Passo {currentStep} de {totalSteps}
                   </span>
-                  <h2 className="text-3xl font-serif text-rose-950 mt-2">
+                  <h2 className="text-3xl font-serif text-stone-900 mt-2">
                     {currentStep === 1 && "Seu Mymo"}
                     {currentStep === 2 && "A História"}
                     {currentStep === 3 && "Personalizar"}
@@ -847,7 +632,7 @@ export default function LovePageApp() {
                     <button
                       key="btn-nav-next"
                       type="submit"
-                      className="flex-[3] bg-rose-900 text-rose-50 py-4 rounded-2xl font-bold shadow-xl shadow-rose-200 hover:bg-rose-800 transition-all flex items-center justify-center gap-2"
+                      className="flex-[3] bg-rose-600 text-rose-50 py-4 rounded-2xl font-bold shadow-xl shadow-rose-200 hover:bg-rose-700 transition-all flex items-center justify-center gap-2"
                     >
                       {currentStep === totalSteps ? "Pagar e Criar" : "Próximo"}{" "}
                       <ChevronRight size={18} />
@@ -875,7 +660,7 @@ export default function LovePageApp() {
               animate={{ y: 0 }}
               className="bg-white w-full max-w-sm rounded-[3rem] p-8 shadow-2xl text-center"
             >
-              <h2 className="text-2xl font-serif text-rose-950 mb-6">Finalizar</h2>
+              <h2 className="text-2xl font-serif text-stone-900 mb-6">Finalizar</h2>
                 <button
                   onClick={() => processPayment("pix")}
                   disabled={isSubmitting}
@@ -944,7 +729,7 @@ export default function LovePageApp() {
               animate={{ scale: 1 }}
               className="bg-white w-full max-w-sm rounded-[3rem] p-6 text-center shadow-2xl"
             >
-              <h2 className="text-2xl font-serif text-rose-950 mb-6">Pague com Pix</h2>
+              <h2 className="text-2xl font-serif text-stone-900 mb-6">Pague com Pix</h2>
               <div className="bg-rose-50 p-6 rounded-[2.5rem] mb-6 flex justify-center border border-rose-100 shadow-inner">
                 <img
                   src={pixData.image}
@@ -996,7 +781,7 @@ export default function LovePageApp() {
                 fill="currentColor"
                 size={40}
               />
-              <h3 className="font-serif text-3xl mb-6 text-rose-950">
+              <h3 className="font-serif text-3xl mb-6 text-stone-900">
                 Seu Mymo está pronto!
               </h3>
               <div className="bg-[#FFFDF0] p-6 rounded-[2.5rem] border border-stone-200 mb-6 inline-block shadow-lg shadow-stone-100">
@@ -1009,7 +794,7 @@ export default function LovePageApp() {
               </div>
               <button
                 onClick={() => window.open(generatedUrl, "_blank")}
-                className="w-full bg-rose-900 text-rose-50 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 mb-3 shadow-xl shadow-rose-200 hover:bg-rose-800 transition-all font-serif"
+                className="w-full bg-rose-600 text-rose-50 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 mb-3 shadow-xl shadow-rose-200 hover:bg-rose-700 transition-all font-serif"
               >
                 <Send size={18} /> Abrir meu Mymo
               </button>
